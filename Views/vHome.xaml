@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pcrespoT3.Views.vHome"
+             Title="Nuevo contacto">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+                <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+                <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}" />
+            </Style>
+
+            <Style TargetType="DatePicker">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="48" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,16" Spacing="6">
+
+            <Image
+                Source="contacto.svg"
+                HeightRequest="90"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Icono de contacto" />
+
+            <Label
+                Text="Registro de contactos"
+                FontSize="24"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label Text="Tipo de identificación" Margin="0,12,0,0" />
+            <Picker x:Name="PkTipo" Title="Seleccione un tipo" SelectedIndexChanged="PkTipo_SelectedIndexChanged" />
+            <Label x:Name="LblErrorTipo" TextColor="#D32F2F" FontSize="12" IsVisible="False" />
+
+            <Label Text="Identificación" Margin="0,8,0,0" />
+            <Entry x:Name="TxtIdentificacion" Placeholder="Seleccione primero el tipo" TextChanged="TxtIdentificacion_TextChanged" Unfocused="TxtIdentificacion_Unfocused" />
+            <Label x:Name="LblErrorIdentificacion" TextColor="#D32F2F" FontSize="12" IsVisible="False" />
+
+            <Label Text="Nombres" Margin="0,8,0,0" />
+            <Entry x:Name="TxtNombres" Placeholder="Ej. Juan Carlos" MaxLength="60" Unfocused="TxtNombres_Unfocused" />
+            <Label x:Name="LblErrorNombres" TextColor="#D32F2F" FontSize="12" IsVisible="False" />
+
+            <Label Text="Apellidos" Margin="0,8,0,0" />
+            <Entry x:Name="TxtApellidos" Placeholder="Ej. Pérez Mora" MaxLength="60" Unfocused="TxtApellidos_Unfocused" />
+            <Label x:Name="LblErrorApellidos" TextColor="#D32F2F" FontSize="12" IsVisible="False" />
+
+            <Label Text="Fecha de nacimiento" Margin="0,8,0,0" />
+            <DatePicker x:Name="DpFecha" Format="dd/MM/yyyy" DateSelected="DpFecha_DateSelected" />
+            <Label x:Name="LblErrorFecha" TextColor="#D32F2F" FontSize="12" IsVisible="False" />
+
+            <Label Text="Correo electrónico" Margin="0,8,0,0" />
+            <Entry x:Name="TxtCorreo" Placeholder="nombre@dominio.com" Keyboard="Email" MaxLength="80" Unfocused="TxtCorreo_Unfocused" />
+            <Label x:Name="LblErrorCorreo" TextColor="#D32F2F" FontSize="12" IsVisible="False" />
+
+            <Label Text="Salario (USD)" Margin="0,8,0,0" />
+            <Entry x:Name="TxtSalario" Placeholder="Ej. 650.00" Keyboard="Numeric" MaxLength="12" Unfocused="TxtSalario_Unfocused" />
+            <Label x:Name="LblErrorSalario" TextColor="#D32F2F" FontSize="12" IsVisible="False" />
+
+            <Button x:Name="BtnGuardar" Text="Guardar y ver resumen" Margin="0,20,0,0" Clicked="BtnGuardar_Clicked" />
+            <Button x:Name="BtnLimpiar" Text="Limpiar formulario" Margin="0,4,0,0" BackgroundColor="{StaticResource Gray500}" Clicked="BtnLimpiar_Clicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

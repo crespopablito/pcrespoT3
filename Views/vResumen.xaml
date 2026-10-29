@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pcrespoT3.Views.vResumen"
+             Title="Resumen del contacto">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="EstiloTitulo" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+            </Style>
+
+            <Style x:Key="EstiloCampo" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+            </Style>
+
+            <Style x:Key="EstiloValor" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+            </Style>
+
+            <Style x:Key="EstiloValorDestacado" TargetType="Label" BasedOn="{StaticResource EstiloValor}">
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource SecondaryDarkText}}" />
+            </Style>
+
+            <Style x:Key="EstiloRuta" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+            </Style>
+
+            <Style x:Key="EstiloTarjeta" TargetType="Border">
+                <Setter Property="Padding" Value="16" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 14" />
+            </Style>
+
+            <Style x:Key="EstiloBotonPrimario" TargetType="Button">
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="ContentLayout" Value="Left,10" />
+            </Style>
+
+            <Style x:Key="EstiloBotonSecundario" TargetType="Button" BasedOn="{StaticResource EstiloBotonPrimario}">
+                <Setter Property="BackgroundColor" Value="{StaticResource Gray500}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,16" Spacing="14">
+
+            <Image
+                Source="iess.svg"
+                HeightRequest="90"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Icono del IESS" />
+
+            <Label Text="Resumen y aporte al IESS" Style="{StaticResource EstiloTitulo}" SemanticProperties.HeadingLevel="Level1" />
+
+            <Border Style="{StaticResource EstiloTarjeta}">
+                <Grid ColumnDefinitions="140,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="12" ColumnSpacing="8">
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Tipo de ID" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="0" Grid.Column="1" x:Name="LblTipo" Style="{StaticResource EstiloValor}" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Identificación" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="1" Grid.Column="1" x:Name="LblIdentificacion" Style="{StaticResource EstiloValor}" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Nombres" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="2" Grid.Column="1" x:Name="LblNombres" Style="{StaticResource EstiloValor}" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Apellidos" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="3" Grid.Column="1" x:Name="LblApellidos" Style="{StaticResource EstiloValor}" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Fecha" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="4" Grid.Column="1" x:Name="LblFecha" Style="{StaticResource EstiloValor}" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="Correo" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="5" Grid.Column="1" x:Name="LblCorreo" Style="{StaticResource EstiloValor}" />
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="Salario" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="6" Grid.Column="1" x:Name="LblSalario" Style="{StaticResource EstiloValor}" />
+
+                    <Label Grid.Row="7" Grid.Column="0" x:Name="LblEtiquetaAporte" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="7" Grid.Column="1" x:Name="LblAporte" Style="{StaticResource EstiloValorDestacado}" />
+
+                    <Label Grid.Row="8" Grid.Column="0" Text="Salario neto" Style="{StaticResource EstiloCampo}" />
+                    <Label Grid.Row="8" Grid.Column="1" x:Name="LblNeto" Style="{StaticResource EstiloValorDestacado}" />
+
+                </Grid>
+            </Border>
+
+            <Button
+                x:Name="BtnExportar"
+                Text="Exportar a archivo de texto"
+                ImageSource="exportar.svg"
+                Style="{StaticResource EstiloBotonPrimario}"
+                Clicked="BtnExportar_Clicked" />
+
+            <Label x:Name="LblRuta" Style="{StaticResource EstiloRuta}" IsVisible="False" />
+
+            <Button
+                x:Name="BtnVolver"
+                Text="Registrar otro contacto"
+                Style="{StaticResource EstiloBotonSecundario}"
+                Clicked="BtnVolver_Clicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
